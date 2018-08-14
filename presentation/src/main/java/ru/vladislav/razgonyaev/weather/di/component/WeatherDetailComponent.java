@@ -12,7 +12,8 @@ public interface WeatherDetailComponent {
 
     @Subcomponent.Builder
     interface Builder {
-        WeatherDetailComponent.Builder weatherDetailModule(WeatherDetailModule weatherDetailModule);
+
+        Builder weatherDetailModule(WeatherDetailModule weatherDetailModule);
         WeatherDetailComponent build();
     }
 

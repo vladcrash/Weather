@@ -7,7 +7,6 @@ import ru.vladislav.razgonyaev.weather.di.component.AppComponent;
 import ru.vladislav.razgonyaev.weather.di.component.DaggerAppComponent;
 import ru.vladislav.razgonyaev.weather.di.component.WeatherComponent;
 import ru.vladislav.razgonyaev.weather.di.component.WeatherDetailComponent;
-import ru.vladislav.razgonyaev.weather.di.module.AppModule;
 import ru.vladislav.razgonyaev.weather.di.module.WeatherDetailModule;
 import ru.vladislav.razgonyaev.weather.di.module.WeatherModule;
 
@@ -58,7 +57,7 @@ public class App extends Application {
 
     private AppComponent buildAppComponent() {
         return DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
+                .context(this)
                 .build();
     }
 }
