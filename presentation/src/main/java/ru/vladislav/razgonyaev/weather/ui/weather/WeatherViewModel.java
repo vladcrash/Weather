@@ -23,12 +23,14 @@ public class WeatherViewModel {
     }
 
     public void loadDailyForecasts() {
-        getDailyForecastsUseCase.execute(new DailyForecastsObserver(), false);
+        getDailyForecastsUseCase.execute(new DailyForecastsObserver(),
+                GetDailyForecasts.Params.getParams(true));
     }
 
     public void onRefresh() {
         isLoading.set(true);
-        getDailyForecastsUseCase.execute(new DailyForecastsObserver(), true);
+        getDailyForecastsUseCase.execute(new DailyForecastsObserver(),
+                GetDailyForecasts.Params.getParams(false));
     }
 
     public ObservableField<List<Forecast>> getDailyForecasts() {

@@ -20,7 +20,8 @@ public class WeatherDetailViewModel {
     }
 
     public void loadHourlyForecasts(Long dayId) {
-        getHourlyForecastsUseCase.execute(new WeatherDetailViewModel.HourlyForecastsObserver(), dayId);
+        getHourlyForecastsUseCase.execute(new WeatherDetailViewModel.HourlyForecastsObserver(),
+                GetHourlyForecasts.Params.getParams(dayId));
     }
 
     public ObservableField<List<Hour>> getHourlyForecasts() {
