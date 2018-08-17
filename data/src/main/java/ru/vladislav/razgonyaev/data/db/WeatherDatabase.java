@@ -10,7 +10,7 @@ import ru.vladislav.razgonyaev.domain.model.Hour;
 import ru.vladislav.razgonyaev.domain.model.Weather;
 
 
-@Database(entities = {Weather.class, Forecast.class, Hour.class}, version = 1)
+@Database(entities = {Weather.class, Forecast.class, Hour.class}, version = 1, exportSchema = false)
 public abstract class WeatherDatabase extends RoomDatabase {
 
     public abstract ForecastDao forecastDao();

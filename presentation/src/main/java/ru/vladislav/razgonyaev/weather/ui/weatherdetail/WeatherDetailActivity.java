@@ -1,9 +1,11 @@
 package ru.vladislav.razgonyaev.weather.ui.weatherdetail;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -19,7 +21,9 @@ public class WeatherDetailActivity extends AppCompatActivity {
     private static final String ID = "ru.vladislav.razgonyaev.weather.ui.weatherdetail.WeatherDetailActivity.ID";
 
     @Inject
-    WeatherDetailViewModel viewModel;
+    WeatherDetailViewModelFactory viewModelFactory;
+
+    private WeatherDetailViewModel viewModel;
 
     public static final Intent newIntent(Context context, Long forecastId) {
         Intent intent = new Intent(context, WeatherDetailActivity.class);
@@ -44,6 +48,7 @@ public class WeatherDetailActivity extends AppCompatActivity {
 
     private void init() {
         ActivityWeatherDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_weather_detail);
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(WeatherDetailViewModel.class);
         binding.setViewModel(viewModel);
     }
 

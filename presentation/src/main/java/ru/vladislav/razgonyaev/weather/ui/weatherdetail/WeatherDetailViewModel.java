@@ -1,5 +1,6 @@
 package ru.vladislav.razgonyaev.weather.ui.weatherdetail;
 
+import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import io.reactivex.observers.DisposableSingleObserver;
 import ru.vladislav.razgonyaev.domain.interactor.GetHourlyForecasts;
 import ru.vladislav.razgonyaev.domain.model.Hour;
 
-public class WeatherDetailViewModel {
+public class WeatherDetailViewModel extends ViewModel {
 
     private WeatherDetailAdapter adapter;
     private GetHourlyForecasts getHourlyForecastsUseCase;
@@ -43,5 +44,11 @@ public class WeatherDetailViewModel {
         public void onError(Throwable e) {
 
         }
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        getHourlyForecastsUseCase.dispose();
     }
 }

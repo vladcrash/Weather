@@ -1,7 +1,9 @@
 package ru.vladislav.razgonyaev.weather.ui.weather;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
@@ -14,7 +16,9 @@ import ru.vladislav.razgonyaev.weather.databinding.ActivityWeatherBinding;
 public class WeatherActivity extends AppCompatActivity {
 
     @Inject
-    WeatherViewModel viewModel;
+    WeatherViewModelFactory viewModelFactory;
+
+    private WeatherViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class WeatherActivity extends AppCompatActivity {
 
     private void init() {
         ActivityWeatherBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_weather);
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(WeatherViewModel.class);
         binding.setViewModel(viewModel);
     }
 

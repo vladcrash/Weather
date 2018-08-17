@@ -1,5 +1,6 @@
 package ru.vladislav.razgonyaev.weather.ui.weather;
 
+import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
@@ -10,7 +11,7 @@ import ru.vladislav.razgonyaev.domain.interactor.GetDailyForecasts;
 import ru.vladislav.razgonyaev.domain.model.Forecast;
 
 
-public class WeatherViewModel {
+public class WeatherViewModel extends ViewModel {
 
     private WeatherAdapter adapter;
     private GetDailyForecasts getDailyForecastsUseCase;
@@ -57,5 +58,11 @@ public class WeatherViewModel {
         public void onError(Throwable e) {
 
         }
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        getDailyForecastsUseCase.dispose();
     }
 }

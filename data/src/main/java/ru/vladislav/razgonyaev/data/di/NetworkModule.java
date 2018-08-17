@@ -1,4 +1,4 @@
-package ru.vladislav.razgonyaev.weather.di.module;
+package ru.vladislav.razgonyaev.data.di;
 
 import android.content.Context;
 
@@ -9,8 +9,9 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import ru.vladislav.razgonyaev.data.R;
 import ru.vladislav.razgonyaev.data.network.WeatherWebService;
-import ru.vladislav.razgonyaev.weather.R;
+
 
 @Module
 public class NetworkModule {

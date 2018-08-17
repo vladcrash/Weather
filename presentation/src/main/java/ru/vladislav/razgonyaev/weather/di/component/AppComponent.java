@@ -6,9 +6,10 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
-import ru.vladislav.razgonyaev.weather.di.module.DatabaseModule;
-import ru.vladislav.razgonyaev.weather.di.module.NetworkModule;
-import ru.vladislav.razgonyaev.weather.di.module.RepositoryModule;
+import ru.vladislav.razgonyaev.data.di.DatabaseModule;
+import ru.vladislav.razgonyaev.data.di.NetworkModule;
+import ru.vladislav.razgonyaev.data.di.RepositoryModule;
+
 
 @Singleton
 @Component(modules = {DatabaseModule.class, NetworkModule.class,

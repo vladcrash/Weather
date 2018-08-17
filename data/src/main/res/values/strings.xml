@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="endpoint">https://api.weather.yandex.ru/v1/</string>
+    <string name="database_name">weather-database</string>
 </resources>

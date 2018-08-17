@@ -4,7 +4,4 @@
     <string name="feels_like">ощущается как</string>
     <string name="temperature_value">%1$d °С</string>
     <string name="separator">/</string>
-
-    <string name="endpoint">https://api.weather.yandex.ru/v1/</string>
-    <string name="database_name">weather-database</string>
 </resources>

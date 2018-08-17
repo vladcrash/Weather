@@ -1,4 +1,4 @@
-package ru.vladislav.razgonyaev.weather.di.module;
+package ru.vladislav.razgonyaev.data.di;
 
 import javax.inject.Singleton;
 

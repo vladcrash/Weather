@@ -7,9 +7,16 @@ import ru.vladislav.razgonyaev.domain.repository.ForecastRepository;
 import ru.vladislav.razgonyaev.weather.di.ActivityScope;
 import ru.vladislav.razgonyaev.weather.ui.weather.WeatherAdapter;
 import ru.vladislav.razgonyaev.weather.ui.weather.WeatherViewModel;
+import ru.vladislav.razgonyaev.weather.ui.weather.WeatherViewModelFactory;
 
 @Module
 public class WeatherModule {
+
+    @Provides
+    @ActivityScope
+    public WeatherViewModelFactory provideWeatherViewModelFactory(WeatherViewModel viewModel) {
+        return new WeatherViewModelFactory(viewModel);
+    }
 
     @Provides
     @ActivityScope

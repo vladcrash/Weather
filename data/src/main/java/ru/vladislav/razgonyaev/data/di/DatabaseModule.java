@@ -1,4 +1,4 @@
-package ru.vladislav.razgonyaev.weather.di.module;
+package ru.vladislav.razgonyaev.data.di;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
@@ -7,8 +7,9 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import ru.vladislav.razgonyaev.data.R;
 import ru.vladislav.razgonyaev.data.db.WeatherDatabase;
-import ru.vladislav.razgonyaev.weather.R;
+
 
 @Module
 public class DatabaseModule {
