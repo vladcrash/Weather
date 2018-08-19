@@ -1,14 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.3'
-        
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,6 +18,83 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
+
+    ext {
+        //Android
+        androidMinSdkVersion = 21
+        androidTargetSdkVersion = 27
+        androidCompileSdkVersion = 27
+
+        //Libraries
+        supportLibraryVersion = "27.1.1"
+        constraintLayoutVersion = '1.1.2'
+        lifecycleExtentionsVersion = '1.1.1'
+        daggerVersion = '2.16'
+        rxJavaVersion = '2.1.17'
+        rxAndroidVersion = '2.0.2'
+        gsonVersion = '2.8.2'
+        roomVersion = '1.1.1'
+        retrofitVersion = '2.4.0'
+        retrofitConverterGsonVersion = '2.3.0'
+        retrofitAdapterRxJavaVersion = '2.2.0'
+        roomRxJavaVersion = '1.1.1'
+
+        //Testing
+        junitVersion = '4.12'
+        testRunnerVersion = '1.0.2'
+        espressoVersion = '3.0.2'
+
+        presentationDependencies = [
+                appCompat             : "com.android.support:appcompat-v7:${supportLibraryVersion}",
+                constraintLayout      : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+                recyclerView          : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+                lifecycleExtensions   : "android.arch.lifecycle:extensions:${lifecycleExtentionsVersion}",
+                dagger                : "com.google.dagger:dagger:${daggerVersion}",
+                daggerAndroidSupport  : "com.google.dagger:dagger-android-support:${daggerVersion}",
+                daggerCompiler        : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:${daggerVersion}",
+                rxJava                : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+                rxAndroid             : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+        ]
+
+        presentationTestDependencies = [
+                junit     : "junit:junit:${junitVersion}",
+                testRunner: "com.android.support.test:runner:${testRunnerVersion}",
+                espresso  : "com.android.support.test.espresso:espresso-core:${espressoVersion}"
+        ]
+
+        domainDependencies = [
+                gson     : "com.google.code.gson:gson:${gsonVersion}",
+                room     : "android.arch.persistence.room:runtime:${roomVersion}",
+                rxJava   : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+                rxAndroid: "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+        ]
+
+        domainTestDependencies = [
+                junit: "junit:junit:${junitVersion}"
+        ]
+
+        dataDependencies = [
+                retrofit              : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+                retrofitConverterGson : "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
+                room                  : "android.arch.persistence.room:runtime:${roomVersion}",
+                roomCompiler          : "android.arch.persistence.room:compiler:${roomVersion}",
+                dagger                : "com.google.dagger:dagger:${daggerVersion}",
+                daggerAndroidSupport  : "com.google.dagger:dagger-android-support:${daggerVersion}",
+                daggerCompiler        : "com.google.dagger:dagger-compiler:${daggerVersion}",
+                daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:${daggerVersion}",
+                rxJava                : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+                rxAndroid             : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+                retrofitAdapterRxJava : "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterRxJavaVersion}",
+                roomRxJava            : "android.arch.persistence.room:rxjava2:${roomRxJavaVersion}"
+        ]
+
+        dataTestDependencies = [
+                junit     : "junit:junit:${junitVersion}",
+                testRunner: "com.android.support.test:runner:${testRunnerVersion}",
+                espresso  : "com.android.support.test.espresso:espresso-core:${espressoVersion}"
+        ]
     }
 }
 

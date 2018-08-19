@@ -1,10 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 27
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
         versionCode 1
         versionName "1.0"
 
@@ -26,30 +28,32 @@ android {
 }
 
 dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+
     implementation project(":domain")
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     //Retrofit 2
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitConverterGson
 
     //Room
-    implementation "android.arch.persistence.room:runtime:1.1.1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    implementation dataDependencies.room
+    annotationProcessor dataDependencies.roomCompiler
 
     //Dagger 2
-    implementation 'com.google.dagger:dagger:2.16'
-    implementation 'com.google.dagger:dagger-android-support:2.16'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
+    implementation dataDependencies.dagger
+    implementation dataDependencies.daggerAndroidSupport
+    annotationProcessor dataDependencies.daggerCompiler
+    annotationProcessor dataDependencies.daggerAndroidProcessor
 
     //RxJava 2
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.17'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-    implementation 'android.arch.persistence.room:rxjava2:1.1.1'
+    implementation dataDependencies.rxJava
+    implementation dataDependencies.rxAndroid
+    implementation dataDependencies.retrofitAdapterRxJava
+    implementation dataDependencies.roomRxJava
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation dataTestDependencies.junit
+    androidTestImplementation dataTestDependencies.testRunner
+    androidTestImplementation dataTestDependencies.espresso
 }

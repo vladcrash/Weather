@@ -1,10 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.getAt("androidCompileSdkVersion")
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 27
+        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
         versionCode 1
         versionName "1.0"
 
@@ -26,14 +28,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
 
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation domainDependencies.gson
+    implementation domainDependencies.room
 
     //RxJava 2
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.17'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation domainDependencies.rxJava
+    implementation domainDependencies.rxAndroid
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation domainTestDependencies.junit
 }
